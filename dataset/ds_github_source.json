@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "/anshlambagit/Azure-Data-Factory/blob/main/Raw%20Data/Fact_Sales_2.csv"
+				"relativeUrl": "/anshlambagit/Azure-Data-Factory/blob/main/Raw%20Data/Fact_Sales_1.csv"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

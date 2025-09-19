@@ -1,6 +1,30 @@
 {
 	"name": "pl_fmg_01",
 	"properties": {
+		"activities": [
+			{
+				"name": "var",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "pipelineReturnValue",
+					"value": [
+						{
+							"key": "test",
+							"value": {
+								"type": "String"
+							}
+						}
+					],
+					"setSystemVariable": true
+				}
+			}
+		],
 		"folder": {
 			"name": "fmg"
 		},

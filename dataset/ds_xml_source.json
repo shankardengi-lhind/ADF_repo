@@ -1,0 +1,19 @@
+{
+	"name": "ds_xml_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_stgen2_source",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Xml",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "databricks.yml",
+				"folderPath": "csvfiles",
+				"fileSystem": "source"
+			}
+		}
+	}
+}

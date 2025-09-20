@@ -1,19 +1,27 @@
 {
-	"name": "ds_github_target",
+	"name": "ds_fmg_fact_dynamic_dataset_02",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_stgen2_target",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"file_name": {
+				"type": "string"
+			}
+		},
 		"folder": {
-			"name": "fmg"
+			"name": "fmg/ds_fmg_fact"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "fact_file1.csv",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
 				"folderPath": "csvfiles",
 				"fileSystem": "destination"
 			},

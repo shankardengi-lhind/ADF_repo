@@ -27,10 +27,6 @@
 			"type": "string",
 			"defaultValue": "https://adfdemofmg.dfs.core.windows.net/"
 		},
-		"tr_source_cp_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/a4668c7d-9ee0-44a1-9db4-915203d1615c/resourceGroups/rg_aidataops/providers/Microsoft.Storage/storageAccounts/adfdemofmg"
-		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -72,9 +68,6 @@
 					},
 					"ls_stgen2_target_properties_typeProperties_url": {
 						"value": "[parameters('ls_stgen2_target_properties_typeProperties_url')]"
-					},
-					"tr_source_cp_properties_typeProperties_scope": {
-						"value": "[parameters('tr_source_cp_properties_typeProperties_scope')]"
 					}
 				}
 			},

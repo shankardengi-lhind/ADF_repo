@@ -30,10 +30,6 @@
 		"tr_source_cp_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/a4668c7d-9ee0-44a1-9db4-915203d1615c/resourceGroups/rg_aidataops/providers/Microsoft.Storage/storageAccounts/adfdemofmg"
-		},
-		"tr_storgage_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/a4668c7d-9ee0-44a1-9db4-915203d1615c/resourceGroups/rg_aidataops/providers/Microsoft.Storage/storageAccounts/adfdemofmg"
 		}
 	},
 	"variables": {
@@ -997,66 +993,6 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/tr_source_cp')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline1",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/source/blobs/csvfiles",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('tr_source_cp_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/tr_storgage')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipeline1",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/source/blobs/csvfiles",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('tr_storgage_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -1130,6 +1066,36 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/ds_fmg_df_fact_source_02')]",
 				"[concat(variables('factoryId'), '/datasets/ds_fmg_df_fact_sink03')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/tr_source_cp')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline1",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/source/blobs/csvfiles",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('tr_source_cp_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
 			]
 		}
 	]

@@ -22,9 +22,6 @@
 		},
 		"tr_source_cp_properties_typeProperties_scope": {
 			"value": "/subscriptions/a4668c7d-9ee0-44a1-9db4-915203d1615c/resourceGroups/rg_aidataops/providers/Microsoft.Storage/storageAccounts/adfdemofmg"
-		},
-		"tr_storgage_properties_typeProperties_scope": {
-			"value": "/subscriptions/a4668c7d-9ee0-44a1-9db4-915203d1615c/resourceGroups/rg_aidataops/providers/Microsoft.Storage/storageAccounts/adfdemofmg"
 		}
 	}
 }

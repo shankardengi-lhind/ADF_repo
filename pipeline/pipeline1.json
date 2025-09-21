@@ -85,6 +85,37 @@
 									"value": "@contains(item().name,'.csv')",
 									"type": "Expression"
 								},
+								"ifFalseActivities": [
+									{
+										"name": "dl_fmg_cp_pl_04_copy1",
+										"type": "Delete",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"dataset": {
+												"referenceName": "ds_fmg_copy_pl_source_01",
+												"type": "DatasetReference"
+											},
+											"enableLogging": false,
+											"storeSettings": {
+												"type": "AzureBlobFSReadSettings",
+												"recursive": true,
+												"wildcardFileName": {
+													"value": "@{item().name}",
+													"type": "Expression"
+												},
+												"enablePartitionDiscovery": false
+											}
+										}
+									}
+								],
 								"ifTrueActivities": [
 									{
 										"name": "cp_fmg_cp_pl_01",

@@ -1,0 +1,26 @@
+{
+	"name": "ds_fmg_copy_pl_source_01",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_stgen2_source",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "copy_pipeline"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "csvfiles",
+				"fileSystem": "source"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

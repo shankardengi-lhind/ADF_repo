@@ -1,0 +1,25 @@
+{
+	"name": "ds_github_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_github_source",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "fmg"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "/anshlambagit/Azure-Data-Factory/blob/main/Raw%20Data/Fact_Sales_1.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

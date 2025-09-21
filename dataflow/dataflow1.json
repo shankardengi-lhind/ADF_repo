@@ -1,0 +1,70 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_fmg_df_fact_source_02",
+						"type": "DatasetReference"
+					},
+					"name": "fmgfactsource01"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_fmg_df_fact_sink03",
+						"type": "DatasetReference"
+					},
+					"name": "dffmgsink04"
+				}
+			],
+			"transformations": [
+				{
+					"name": "slfmgselect02"
+				},
+				{
+					"name": "splitcountry"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          InvoiceNo as string,",
+				"          StockCode as string,",
+				"          Description as string,",
+				"          Quantity as short,",
+				"          InvoiceDate as string,",
+				"          UnitPrice as double,",
+				"          CustomerID as short,",
+				"          Country as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> fmgfactsource01",
+				"fmgfactsource01 select(mapColumn(",
+				"          InvoiceNo,",
+				"          StockCode,",
+				"          Description,",
+				"          Quantity,",
+				"          InvoiceDate,",
+				"          CustomerID,",
+				"          Country",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> slfmgselect02",
+				"slfmgselect02 split(Country==\"Germany\",",
+				"     Country==\"United Kingdom\",",
+				"     disjoint: false) ~> splitcountry@(countrygermany, UnitedKingdom, othercountry)",
+				"splitcountry@countrygermany sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> dffmgsink04"
+			]
+		}
+	}
+}

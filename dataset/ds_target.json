@@ -1,0 +1,21 @@
+{
+	"name": "ds_target",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_stgen2_target",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "fmg"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "xml_files",
+				"fileSystem": "destination"
+			}
+		}
+	}
+}

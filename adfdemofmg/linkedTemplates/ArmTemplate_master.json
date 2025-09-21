@@ -11,9 +11,29 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_stgen2_source'"
 		},
+		"ls_stgen2_target_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_stgen2_target'"
+		},
+		"ls_github_source_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://github.com"
+		},
 		"ls_stgen2_source_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adfdemofmg.dfs.core.windows.net/"
+		},
+		"ls_stgen2_target_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adfdemofmg.dfs.core.windows.net/"
+		},
+		"tr_source_cp_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/a4668c7d-9ee0-44a1-9db4-915203d1615c/resourceGroups/rg_aidataops/providers/Microsoft.Storage/storageAccounts/adfdemofmg"
+		},
+		"tr_storgage_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/a4668c7d-9ee0-44a1-9db4-915203d1615c/resourceGroups/rg_aidataops/providers/Microsoft.Storage/storageAccounts/adfdemofmg"
 		},
 		"containerUri": {
 			"type": "string",
@@ -45,12 +65,47 @@
 					"ls_stgen2_source_accountKey": {
 						"value": "[parameters('ls_stgen2_source_accountKey')]"
 					},
+					"ls_stgen2_target_accountKey": {
+						"value": "[parameters('ls_stgen2_target_accountKey')]"
+					},
+					"ls_github_source_properties_typeProperties_url": {
+						"value": "[parameters('ls_github_source_properties_typeProperties_url')]"
+					},
 					"ls_stgen2_source_properties_typeProperties_url": {
 						"value": "[parameters('ls_stgen2_source_properties_typeProperties_url')]"
+					},
+					"ls_stgen2_target_properties_typeProperties_url": {
+						"value": "[parameters('ls_stgen2_target_properties_typeProperties_url')]"
+					},
+					"tr_source_cp_properties_typeProperties_scope": {
+						"value": "[parameters('tr_source_cp_properties_typeProperties_scope')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adfdemofmg_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"tr_storgage_properties_typeProperties_scope": {
+						"value": "[parameters('tr_storgage_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdemofmg_ArmTemplate_0')]"
+			]
 		}
 	]
 }

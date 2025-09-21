@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_fmg_df_fact_source_02",
+						"referenceName": "ds_fmg_copy_pl_sink_02",
 						"type": "DatasetReference"
 					},
 					"name": "fmgfactsource01"
@@ -30,17 +30,7 @@
 				}
 			],
 			"scriptLines": [
-				"source(output(",
-				"          InvoiceNo as string,",
-				"          StockCode as string,",
-				"          Description as string,",
-				"          Quantity as short,",
-				"          InvoiceDate as string,",
-				"          UnitPrice as double,",
-				"          CustomerID as short,",
-				"          Country as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> fmgfactsource01",
 				"fmgfactsource01 select(mapColumn(",

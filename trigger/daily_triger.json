@@ -1,0 +1,33 @@
+{
+	"name": "daily_triger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_incremental_dataload",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2025-10-02T15:06:00",
+				"endTime": "2025-10-03T15:06:00",
+				"timeZone": "W. Europe Standard Time",
+				"schedule": {
+					"minutes": [
+						12
+					],
+					"hours": [
+						12
+					]
+				}
+			}
+		}
+	}
+}

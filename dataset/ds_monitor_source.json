@@ -1,0 +1,23 @@
+{
+	"name": "ds_monitor_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_stgen2_source",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "poc"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "cdc.json",
+				"folderPath": "monitor",
+				"fileSystem": "source"
+			}
+		},
+		"schema": {}
+	}
+}

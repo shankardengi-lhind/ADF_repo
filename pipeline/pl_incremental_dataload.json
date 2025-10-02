@@ -1,0 +1,94 @@
+{
+	"name": "pl_incremental_dataload",
+	"properties": {
+		"activities": [
+			{
+				"name": "lkp_cdc_json",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "ds_monitor_source",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "cp_ingestion_datalake",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "lkp_cdc_json",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "select * from @{pipeline().parameters.schema}.@{pipeline().parameters.table} where last_updated = @{activity('lkp_cdc_json').output.firstRow.cdc_timestamp}",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sql_source",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"schema": {
+				"type": "string",
+				"defaultValue": "source"
+			},
+			"table": {
+				"type": "string",
+				"defaultValue": "Orders"
+			}
+		},
+		"variables": {
+			"test": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "poc"
+		},
+		"annotations": []
+	}
+}

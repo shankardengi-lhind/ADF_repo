@@ -1,0 +1,17 @@
+{
+	"name": "ls_sql_source",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "fmg-demo-server.database.windows.net",
+			"database": "fmg_demo",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "shanadmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEFCRTg2Q0VFLTgyMjAtNEI0My1COTU3LUJCMzhEMEExNTM2NV8wZGU5ZGViMC00MDMyLTRlNDUtYTQ3Yy05MmIxMDczNGI5ZGMiDQp9"
+		}
+	}
+}

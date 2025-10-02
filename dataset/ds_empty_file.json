@@ -1,0 +1,23 @@
+{
+	"name": "ds_empty_file",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_stgen2_source",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "poc"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "empty.json",
+				"folderPath": "monitor",
+				"fileSystem": "source"
+			}
+		},
+		"schema": {}
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"name": "ds_datalake_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_stgen2_source",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "validate_pipline"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "files",
+				"fileSystem": "source"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

@@ -31,40 +31,6 @@
 						"type": "DelimitedTextReadSettings"
 					}
 				}
-			},
-			{
-				"name": "fr_validate",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "gm_files",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('gm_files').output.childItems",
-						"type": "Expression"
-					},
-					"activities": [
-						{
-							"name": "sw_validate",
-							"type": "Switch",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"on": {
-									"value": "@split(item().name, '.')[0]",
-									"type": "Expression"
-								},
-								"cases": []
-							}
-						}
-					]
-				}
 			}
 		],
 		"folder": {

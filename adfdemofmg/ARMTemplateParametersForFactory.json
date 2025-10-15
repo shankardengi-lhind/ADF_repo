@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "adfdemofmg"
 		},
+		"ls_sql_source_password": {
+			"value": ""
+		},
 		"ls_stgen2_source_accountKey": {
 			"value": ""
 		},
@@ -13,6 +16,18 @@
 		},
 		"ls_github_source_properties_typeProperties_url": {
 			"value": "https://github.com"
+		},
+		"ls_poke_api_properties_typeProperties_url": {
+			"value": "https://pokeapi.co"
+		},
+		"ls_sql_source_properties_typeProperties_server": {
+			"value": "fmg-demo-server.database.windows.net"
+		},
+		"ls_sql_source_properties_typeProperties_database": {
+			"value": "fmg_demo"
+		},
+		"ls_sql_source_properties_typeProperties_userName": {
+			"value": "shanadmin"
 		},
 		"ls_stgen2_source_properties_typeProperties_url": {
 			"value": "https://adfdemofmg.dfs.core.windows.net/"
